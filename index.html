@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Supports de communication — Gaming Toussaint 2026</title>
+<meta name="description" content="Flyer et signalétique de Gaming Toussaint 2026, les 20 et 21 octobre à la Halle du centre culturel de Cestas.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0a0a14">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎮</text></svg>">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600;700&display=swap');
+  :root{
+    --bg: #0a0a14; --bg-alt: #10101c;
+    --neon-purple: #b026ff; --neon-cyan: #22e8ff; --neon-pink: #ff2e88;
+    --text: #e8e8f5; --text-dim: #9494b0; --border: rgba(255,255,255,0.1);
+  }
+  *{ margin: 0; padding: 0; box-sizing: border-box; }
+  body{
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+    padding: 56px 5% 70px;
+    position: relative;
+  }
+  body::before{
+    content: ""; position: fixed; inset: 0; z-index: -2;
+    background-image: linear-gradient(rgba(176,38,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(176,38,255,0.06) 1px, transparent 1px);
+    background-size: 45px 45px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%);
+  }
+  body::after{
+    content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+    background: radial-gradient(circle at 15% 20%, rgba(176,38,255,0.18), transparent 45%), radial-gradient(circle at 85% 80%, rgba(34,232,255,0.14), transparent 45%);
+  }
+  h1, h2{ font-family: 'Orbitron', sans-serif; }
+  .entete{ text-align: center; max-width: 720px; margin: 0 auto 44px; }
+  .tag{ display: inline-block; font-size: 0.8rem; letter-spacing: 3px; text-transform: uppercase; color: var(--neon-pink); }
+  h1{
+    font-size: clamp(1.9rem, 6vw, 2.9rem); line-height: 1.15; margin-top: 8px;
+    background: linear-gradient(90deg, var(--neon-purple), var(--neon-cyan), var(--neon-pink));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .entete p{ color: var(--text-dim); margin-top: 14px; }
+  .grille{ max-width: 980px; margin: 0 auto; display: grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+  .carte{
+    padding: 30px 28px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    background: linear-gradient(165deg, rgba(255,255,255,0.05), transparent 60%), var(--bg-alt);
+  }
+  .carte .ico{
+    display: grid; place-items: center; width: 52px; height: 52px; font-size: 1.7rem; margin-bottom: 14px;
+    border-radius: 15px; border: 1px solid rgba(255,255,255,0.12);
+    background: linear-gradient(135deg, rgba(176,38,255,0.3), rgba(34,232,255,0.18));
+  }
+  .carte h2{ font-size: 1.3rem; color: var(--neon-cyan); margin-bottom: 8px; }
+  .carte p{ color: var(--text-dim); font-size: 0.95rem; }
+  .actions{ display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+  .btn{
+    display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: 0 24px;
+    border-radius: 40px; text-decoration: none; font-weight: 700; font-size: 0.95rem; letter-spacing: 1px; text-transform: uppercase;
+    transition: box-shadow 0.2s, background 0.2s;
+  }
+  .btn.principal{ background: linear-gradient(90deg, var(--neon-purple), var(--neon-cyan)); color: #06060c; }
+  .btn.principal:hover{ box-shadow: 0 8px 26px rgba(176,38,255,0.4); }
+  .btn.secondaire{ color: var(--text); border: 1px solid rgba(34,232,255,0.55); background: rgba(34,232,255,0.05); }
+  .btn.secondaire:hover{ background: rgba(34,232,255,0.12); }
+  .btn:focus-visible{ outline: 2px solid var(--neon-cyan); outline-offset: 3px; }
+  .pied{ text-align: center; color: var(--text-dim); font-size: 0.85rem; margin-top: 44px; }
+  .pied a{ color: var(--neon-cyan); text-decoration: underline; }
+</style>
+</head>
+<body>
+  <header class="entete">
+    <span class="tag">Supports de communication</span>
+    <h1>Gaming Toussaint 2026</h1>
+    <p>20 et 21 octobre 2026 · Halle du centre culturel, Cestas. Les documents à imprimer ou à partager.</p>
+  </header>
+
+  <main class="grille">
+    <section class="carte">
+      <div class="ico" aria-hidden="true">📄</div>
+      <h2>Flyer</h2>
+      <p>Affiche A4 de 2 pages : la présentation du festival, le programme et un QR code vers le site.</p>
+      <div class="actions">
+        <a class="btn principal" href="flyer-gaming-toussaint.pdf">Ouvrir le PDF</a>
+        <a class="btn secondaire" href="flyer-gaming-toussaint.html">Version modifiable</a>
+      </div>
+    </section>
+    <section class="carte">
+      <div class="ico" aria-hidden="true">🪧</div>
+      <h2>Signalétique de la Halle</h2>
+      <p>20 pages A4 : le plan d'emplacement des panneaux, un panneau par espace avec son mini-plan, et des flèches de direction.</p>
+      <div class="actions">
+        <a class="btn principal" href="signaletique-gaming-toussaint.pdf">Ouvrir le PDF</a>
+        <a class="btn secondaire" href="signaletique-gaming-toussaint.html">Version modifiable</a>
+      </div>
+    </section>
+  </main>
+
+  <p class="pied">Le site du festival : <a href="https://natxmans.github.io/site-2K27/">natxmans.github.io/site-2K27</a></p>
+</body>
+</html>
