@@ -44,9 +44,46 @@
   .notes{ margin-top: 3mm; border: 1px solid #e0dcee; border-radius: 2mm; height: 49mm; padding: 2mm 3mm; color: #a9a3c4; font-size: 8pt; background-image: repeating-linear-gradient(#fff 0, #fff 6.6mm, #e8e5f1 6.6mm, #e8e5f1 7mm); }
   .pied{ position: absolute; left: 14mm; right: 14mm; bottom: 6mm; display: flex; justify-content: space-between; font-size: 7.8pt; color: #8a86a3; }
   .astuce{ margin-top: 2.5mm; padding: 2.2mm 3mm; border-radius: 2mm; background: #eefcff; border: 1px solid #bfeef7; font-size: 9pt; color: #234; }
+
+  /* ---- Mode modifiable (écran uniquement) ---- */
+  @media screen{
+    .barre{
+      position: sticky; top: 0; z-index: 1000; align-self: stretch;
+      display: flex; flex-wrap: wrap; align-items: center; gap: 3mm 4mm; justify-content: center;
+      padding: 3mm 5mm; background: #151826; color: #fff;
+      font-family: "Segoe UI", Arial, Helvetica, sans-serif; font-size: 10pt; line-height: 1.3;
+      box-shadow: 0 1mm 4mm rgba(0,0,0,.35);
+    }
+    .barre .aide{ flex: 1 1 100mm; min-width: 60mm; color: #cfd0e6; font-size: 9.2pt; }
+    .barre .aide b{ color: #fff; }
+    .barre button{
+      font: inherit; font-weight: 700; cursor: pointer; border: 0; border-radius: 99px; padding: 2mm 5mm;
+      background: linear-gradient(90deg, #b026ff, #22b8d8); color: #fff;
+    }
+    .barre button.discret{ background: transparent; border: 1px solid #6b6f95; color: #cfd0e6; font-weight: 600; }
+    .barre button:hover{ filter: brightness(1.12); }
+    .barre .etat{ font-size: 8.6pt; color: #8ee0a6; min-width: 34mm; text-align: right; }
+    [contenteditable="true"]{ outline: none; cursor: text; }
+    ul.liste li{ cursor: pointer; }
+    ul.liste li > div{ cursor: text; }
+
+    body{ background: #e6e3f0; padding-bottom: 14mm; }
+    .page{ margin: 9mm auto 0; height: auto; min-height: 297mm; overflow: visible; box-shadow: 0 2mm 9mm rgba(40,20,90,.22); }
+  }
+  @media print{ .barre{ display: none !important; } }
+  ul.liste li.fait::before{ background: #b026ff; border-color: #b026ff; box-shadow: inset 0 0 0 .65mm #fff; }
+  ul.liste li.fait > div{ text-decoration: line-through; text-decoration-color: #9a96b5; opacity: .55; }
 </style>
 </head>
 <body>
+
+<div class="barre" id="barre">
+  <div class="aide"><b>Page modifiable :</b> clique dans un texte pour le changer, écris dans les cadres et les notes, clique sur un carré pour cocher. Tout est gardé automatiquement sur cet appareil.</div>
+  <span class="etat" id="etat" role="status" aria-live="polite"></span>
+  <button type="button" id="btn-imprimer">🖨 Imprimer / enregistrer en PDF</button>
+  <button type="button" class="discret" id="btn-reset" title="Efface tes modifications et remet le document d'origine">Remettre à zéro</button>
+</div>
+
 
 <!-- ============ PAGE 1 ============ -->
 <section class="page">
@@ -173,5 +210,48 @@
   <div class="pied"><span>Fiche de préparation — usage interne</span><span>2 / 2</span></div>
 </section>
 
+
+<script>
+(function(){
+  var CLE = 'fiche-reunion-saj-7-octobre-v1';
+  var pages = Array.prototype.slice.call(document.querySelectorAll('.page'));
+  var etat = document.getElementById('etat');
+  var minuteur = null;
+
+  // restaurer ce qui a été écrit lors d'une visite précédente
+  try {
+    var memo = JSON.parse(localStorage.getItem(CLE) || 'null');
+    if (memo && memo.length === pages.length) pages.forEach(function(p, i){ p.innerHTML = memo[i]; });
+  } catch (e) {}
+
+  pages.forEach(function(p){ p.setAttribute('contenteditable', 'true'); p.setAttribute('spellcheck', 'false'); });
+
+  function sauver(){
+    try {
+      localStorage.setItem(CLE, JSON.stringify(pages.map(function(p){ return p.innerHTML; })));
+      etat.textContent = '✔ Enregistré';
+    } catch (e) { etat.textContent = 'Non enregistré (stockage bloqué)'; }
+    clearTimeout(minuteur);
+    minuteur = setTimeout(function(){ etat.textContent = ''; }, 2500);
+  }
+  function planifier(){ etat.textContent = '…'; clearTimeout(minuteur); minuteur = setTimeout(sauver, 600); }
+
+  document.addEventListener('input', planifier);
+
+  // clic sur un carré de case à cocher (l'élément <li> lui-même) : cocher / décocher
+  document.addEventListener('click', function(ev){
+    var li = ev.target;
+    if (li && li.matches && li.matches('ul.liste li')){ li.classList.toggle('fait'); sauver(); }
+  });
+
+  document.getElementById('btn-imprimer').addEventListener('click', function(){ window.print(); });
+  document.getElementById('btn-reset').addEventListener('click', function(){
+    if (confirm('Effacer toutes tes modifications et remettre le document d\'origine ?')){
+      try { localStorage.removeItem(CLE); } catch (e) {}
+      location.reload();
+    }
+  });
+})();
+</script>
 </body>
 </html>
