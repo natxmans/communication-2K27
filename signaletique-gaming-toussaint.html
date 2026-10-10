@@ -106,7 +106,7 @@
   // [x, y, largeur, hauteur] dans le repère du plan (1169 x 826) — mêmes positions que le site.
   var ESPACES = [
     { n: '1',  titre: 'FIFA · PS4',            sous: 'Football sur PS4, projeté sur le mur',                        pegi: 3,  rect: [190,58,155,90],   c: '#0f8a8a', t: '86pt' },
-    { n: '2',  titre: 'Mario Kart 1',          sous: 'Switch SAJ 1 · sélections le matin, tournoi découverte l\'après-midi', pegi: 3, rect: [350,58,118,90], c: '#d2452b', t: '78pt' },
+    { n: '2',  titre: 'Mario Kart 1',          sous: 'Switch SAJ 1 · tournoi découverte pour tous à 14h', pegi: 3, rect: [350,58,118,90], c: '#d2452b', t: '78pt' },
     { n: '3',  titre: 'Mario Kart 2',          sous: 'Deuxième poste du tournoi Mario Kart',                        pegi: 3,  rect: [318,186,102,108], c: '#d2452b', t: '78pt' },
     { n: '4',  titre: 'Brawl Stars',           sous: 'Espace détente : poufs et smartphones',                       pegi: 7,  rect: [470,58,88,90],    c: '#c98a12', t: '82pt' },
     { n: '5',  titre: 'Scène · Just Dance',    sous: 'Mot du Maire, Kahoot géant, finales des tournois, goûter',    pegi: 3,  rect: [612,58,190,90],   c: '#e0338a', t: '72pt' },
@@ -118,11 +118,11 @@
     { n: '11', titre: 'Société',               sous: 'Jeux de société calmes · stand du SAJ',                       pegi: null, rect: [637,186,66,108], c: '#5f6b7a', t: '90pt', jour: 'Mardi uniquement' },
     { n: '12', titre: 'ABCS',                  sous: 'Stand de l\'association ABCS (Blanquefort) · PS5 et Switch',              pegi: null, rect: [566,186,66,108], c: '#2b7fd2', t: '86pt', jour: 'Mercredi uniquement' },
     { n: '13', titre: 'Rétro Mios',            sous: 'Bornes d\'arcade fabriquées par les jeunes de l\'Espace Jeunes de Mios', pegi: null, rect: [637,186,66,108], c: '#c2407f', t: '62pt', jour: 'Mercredi uniquement' },
-    { n: '14', titre: 'Espace repas',          sous: 'Pique-nique apporté par chaque jeune · 2 services : 12h30 et 13h30', pegi: null, rect: [750,380,143,158], c: '#5f6b7a', t: '58pt', note: '9 tables · 54 places' },
-    { n: '15', titre: 'Accueil',               sous: 'Pointage, badge PEGI et règles de la journée',                pegi: null, rect: [662,428,44,110],  c: '#1f9a6b', t: '100pt' },
-    { n: '16', titre: 'Dépôt',                 sous: 'Dépose tes affaires (sac, veste) dans les bacs',              pegi: null, rect: [662,318,44,100],  c: '#5f6b7a', t: '110pt' },
+    { n: '14', titre: 'Espace repas',          sous: 'Repas des participants : pique-nique apporté par chaque jeune · 2 services, 12h30 et 13h30', pegi: null, rect: [750,380,143,158], c: '#5f6b7a', t: '58pt', note: '9 tables · 54 places' },
+    { n: '15', titre: 'Accueil',               sous: 'Accueil des participants : pointage, badge PEGI et règles de la journée',                pegi: null, rect: [662,428,44,110],  c: '#1f9a6b', t: '100pt' },
+    { n: '16', titre: 'Dépôt',                 sous: 'Dépôt des affaires des participants (sacs, vestes) dans les bacs',              pegi: null, rect: [662,318,44,100],  c: '#5f6b7a', t: '110pt' },
     { n: '17', titre: 'Entrée',                sous: 'Bienvenue à Gaming Toussaint 2026 · on entre par le préau',   pegi: null, rect: [700,548,60,52],   c: '#1f8a5b', t: '92pt', fleche: 'haut', pt: [728,574] },
-    { n: '18', titre: 'Cinéma',                sous: 'Niveau −1 : sortir par le préau, entrer dans la cage d\'escalier et descendre', pegi: null, rect: [440,520,80,80], c: '#123a8a', t: '92pt', fleche: 'bas', pt: [480,560], note: 'Départ groupé : un adulte devant, un derrière' }
+    { n: '18', titre: 'Cinéma',                sous: 'Niveau −1 : sortir par le préau, entrer dans la cage d\'escalier et descendre', pegi: null, rect: [440,520,80,80], c: '#123a8a', t: '92pt', fleche: 'bas', pt: [480,560] }
   ];
   var PEGI_COULEUR = { 3: '#8ee07f', 7: '#8ee07f', 12: '#f6b24a', 16: '#f6b24a' };
   var PLAN = 'plan-halle-original.png';
@@ -200,7 +200,7 @@
 
 <script>
 (function(){
-  var CLE = 'signaletique-gaming-toussaint-v1';
+  var CLE = 'signaletique-gaming-toussaint-v2';
   var pages = Array.prototype.slice.call(document.querySelectorAll('.page'));
   var etat = document.getElementById('etat');
   var minuteur = null;
